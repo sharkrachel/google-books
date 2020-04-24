@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import API from "../utils/API";
 import { Link } from "react-router-dom";
-import Container from "../components/Container"
-import TextBox from "../components/TextBox"
-import ListItem from "../components/ListItem"
-import Header from "../components/Header"
+import Container from "../components/Container";
+import TextBox from "../components/TextBox";
+import ListItem from "../components/ListItem";
+import Header from "../components/Header";
 
 class Books extends Component {
     state = {
@@ -35,7 +35,7 @@ class Books extends Component {
         console.log("results: ", this.state.books);
            
        }).catch (err => console.log(err));
-   }
+   };
 
    saveBook = book => {
        console.log(book);
@@ -53,10 +53,10 @@ class Books extends Component {
            console.log("book saved: ", res);
        })
        .catch(err => console.log(err));
-   }
+   };
     componentDidMount() {
         
-    }
+    };
     render() {
         return (
             <Container>
@@ -65,7 +65,7 @@ class Books extends Component {
                 <ListItem books={this.state.books}/>
             </Container>
         )
-    }
+    };
 
 }
 
