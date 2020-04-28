@@ -5,6 +5,7 @@ const app = express();
 const mongoose = require("mongoose");
 
 
+
 // Define middleware
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -16,6 +17,8 @@ apiRoutes(app);
 if (process.env.NODE_ENV === "production") {
     app.use(express.static("client/build"));
 }
+
+
 //API Routes
 
 app.get("*", (req, res) => {

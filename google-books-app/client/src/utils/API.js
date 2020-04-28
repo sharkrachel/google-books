@@ -6,14 +6,15 @@ export default {
     },
 
     saveBook: function(newBook) {
+        console.log("newBook: ", newBook)
         return axios.post("/api/books", newBook);
     },
 
     getSavedBooks: function() {
         return axios.get("/api/books");
     },
-    
+
     deleteBook: function(id) {
-        return axios.delete("api/books" + id);
+        return axios.delete("api/books/" + id);
     }
 }

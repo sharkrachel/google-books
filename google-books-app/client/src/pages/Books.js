@@ -37,14 +37,15 @@ class Books extends Component {
        }).catch (err => console.log(err));
    };
 
-   saveBook = book => {
-       console.log(book);
+   saveBook = id => {
+       console.log(id);
 
-       let currentBook = this.state.books.find(book => book.id === book);
+       let currentBook = this.state.books.find(book => book.id === id);
+       console.log("this.state.books: ", this.state.books);
 
        API.saveBook({
            title: currentBook.volumeInfo.title,
-           author: currentBook.volumeInfo.author[0],
+           author: [].concat(currentBook.volumeInfo.authors),
            plot: currentBook.volumeInfo.description,
            image: currentBook.volumeInfo.imageLinks.thumbnail,
            link: currentBook.volumeInfo.previewLink
@@ -62,7 +63,7 @@ class Books extends Component {
             <Container>
                 <Header />
                 <TextBox search={this.state.search}  handleInputChange={this.handleInputChange} handleSubmit={this.handleSubmit}  />
-                <ListItem books={this.state.books}/>
+                <ListItem books={this.state.books} handleSubmit={this.saveBook}/>
             </Container>
         )
     };

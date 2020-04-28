@@ -17,7 +17,9 @@ export default function ListItem(props) {
                                 <h4 className="mb-1">{book.volumeInfo.title}</h4>
                             </div>
                             <div className="d-flex w-100 justify-content-between">
-                                <h5 className="mb-1">{book.volumeInfo.authors}</h5>
+                                <h5 className="mb-1">{book.volumeInfo.authors.map((author) => {
+                                    return (<> {author}  <br /> </>);  
+                                }) }</h5>
                             </div>
                             <p className="mb-1">{book.volumeInfo.description}</p>
 
@@ -27,7 +29,7 @@ export default function ListItem(props) {
                             <a href={book.volumeInfo.previewLink}  target="_blank">
                                 <button className="btn btn-dark">View</button>
                             </a>
-                            <button onClick={() => { props.saveBook(props.result) }} className="btn btn-dark ml-3">Save</button>
+                            <button onClick={() => { props.handleSubmit(book.id) }} saveBook={props.saveBook} result={book} className="btn btn-dark ml-3">Save</button>
                         </span>
 
                     </div>

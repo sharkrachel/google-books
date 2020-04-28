@@ -21,6 +21,7 @@ class Saved extends Component {
     getBooks = () => {
         Axios.get("/api/books")
             .then(res => {
+                console.log("results: ", res);
                 this.setState({ savedBooks: res.data })
             })
             .catch(err => console.log(err));
@@ -28,7 +29,7 @@ class Saved extends Component {
 
     deleteBook = id => {
         API.deleteBook(id)
-        .then(res => this.loadBooks())
+        .then(res => this.getBooks())
         .catch (err => console.log(err));
     };
 
@@ -36,7 +37,8 @@ class Saved extends Component {
         return (
             <Container>
                 <Header />
-                <SavedBooks books={this.state.savedBooks} />
+                {console.log("static text", this.state.savedBooks)}
+                <SavedBooks books={this.state.savedBooks} handleSubmit={this.deleteBook} />
             </Container>
         )
     };

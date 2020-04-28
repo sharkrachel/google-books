@@ -8,7 +8,7 @@ const bookSchema = new Schema({
         required: true
     },
     author: {
-        type: String,
+        type: Array,
         required: true
     },
     plot: {
@@ -26,3 +26,5 @@ const bookSchema = new Schema({
         default: false
     }
 })
+const Book = mongoose.model("Book", bookSchema);
+module.exports = Book;
